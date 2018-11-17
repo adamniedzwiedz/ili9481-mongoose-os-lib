@@ -1,7 +1,7 @@
-# A blank Mongoose OS library
+# Arduino Adafruit TFT LCD library for ILI9481
 
 
 ## Overview
 
-This blank library is intended to be used as a skeleton for deleloping
-Mongoose OS libraries.
+This is a partial port of the Adafruit TFT LCD library for ILI9481 display. The library has been adjusted to ESP32 only.
+

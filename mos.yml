@@ -1,17 +1,20 @@
-author: mongoose-os
+author: adamniedzwiedz <niedzwiedz.adam@gmail.com>
 type: lib
-description: An empty lib that does nothing
+description: Arduino Adafruit TFT LCD
 version: 1.0
 
 sources:
   - src
-filesystem:
-  - fs
-config_schema:
+
+includes:
+  - include
+
 libs:
+  - origin: https://github.com/mongoose-os-libs/arduino-compat
+  - origin: https://github.com/mongoose-os-libs/arduino-adafruit-gfx
 
 tags:
   - c
-  - docs:misc:Empty
+  - hw
 
 manifest_version: 2017-09-29
