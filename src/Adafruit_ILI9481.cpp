@@ -298,3 +298,7 @@ void Adafruit_ILI9481::drawPixel(int16_t x, int16_t y, uint16_t color)
 
   CS_IDLE;
 }
+
+uint16_t Adafruit_ILI9481::color565(uint8_t r, uint8_t g, uint8_t b) {
+  return ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3);
+}

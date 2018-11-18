@@ -23,6 +23,7 @@ class Adafruit_ILI9481 : public Adafruit_GFX {
     void fillScreen(uint16_t color);
 
     void drawPixel(int16_t x, int16_t y, uint16_t color);
+    uint16_t color565(uint8_t r, uint8_t g, uint8_t b);
 
   private:
     void init(void);
