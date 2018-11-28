@@ -22,6 +22,8 @@ class Adafruit_ILI9481 : public Adafruit_GFX {
     void setAddrWindow(int x1, int y1, int x2, int y2);
     void fillScreen(uint16_t color);
 
+    void drawXBitmap(int16_t x, int16_t y, const uint8_t *bitmap, 
+                     int16_t w, int16_t h, uint16_t color);
     void drawPixel(int16_t x, int16_t y, uint16_t color);
     uint16_t color565(uint8_t r, uint8_t g, uint8_t b);
 

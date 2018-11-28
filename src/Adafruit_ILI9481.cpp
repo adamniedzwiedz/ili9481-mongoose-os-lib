@@ -37,6 +37,8 @@ static const uint8_t LCD_DATA[8] = { 12, 13, 26, 25, 17, 16, 27, 14};
 #define ILI9481_MADCTL_MV  0x20
 #define ILI9481_MADCTL_BGR 0x08
 
+#define pgm_read_byte(addr) (*(const unsigned char *)(addr))
+
 static const uint8_t ILI9481_regValues[] = {
   0x11, 0,                   // exit sleep mode
 	TFTLCD_DELAY, 50,          // delay 50ms
@@ -301,4 +303,22 @@ void Adafruit_ILI9481::drawPixel(int16_t x, int16_t y, uint16_t color)
 
 uint16_t Adafruit_ILI9481::color565(uint8_t r, uint8_t g, uint8_t b) {
   return ((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3);
+}
+
+//Draw XBitMap Files (*.xbm), exported from GIMP,
+//Usage: Export from GIMP to *.xbm, rename *.xbm to *.c and open in editor.
+//C Array can be directly used with this function
+void Adafruit_ILI9481::drawXBitmap(int16_t x, int16_t y,
+                              const uint8_t *bitmap, int16_t w, int16_t h,
+                              uint16_t color) 
+{
+  int16_t i, j, byteWidth = (w + 7) / 8;
+  
+  for(j=0; j<h; j++) {
+    for(i=0; i<w; i++ ) {
+      if(pgm_read_byte(bitmap + j * byteWidth + i / 8) & (1 << (i % 8))) {
+        drawPixel(x+i, y+j, color);
+      }
+    }
+  }
 }
